@@ -1,406 +1,425 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - KIMA SERAPHIN</title>
-    <!-- Police Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #eef2f5;
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 15px;
-        }
-        .cv {
-            max-width: 1000px;
-            width: 100%;
-            background: #ffffff;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            border-radius: 16px;
-            padding: 20px 25px;
-            margin-bottom: 15px;
-        }
-        .btn-telecharger {
-            background: #1d4a6e;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            padding: 10px 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .btn-telecharger:hover {
-            background: #0b2b44;
-        }
-        /* En-tête avec photo */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-        .photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #d0d9e2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1d4a6e;
-            font-size: 12px;
-            border: 2px solid #1d4a6e;
-            overflow: hidden;
-        }
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .photo-placeholder {
-            font-style: italic;
-        }
-        .titre {
-            flex: 1;
-        }
-        .titre h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0b2b44;
-            letter-spacing: -0.5px;
-            margin-bottom: 2px;
-        }
-        .sous-titre {
-            font-size: 14px;
-            font-weight: 600;
-            color: #1d4a6e;
-            background: #e9ecf0;
-            display: inline-block;
-            padding: 4px 18px;
-            border-radius: 30px;
-        }
-        .coordonnees {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px 20px;
-            font-size: 12px;
-            color: #2e4053;
-            border-top: 1px solid #cbd7e6;
-            border-bottom: 1px solid #cbd7e6;
-            padding: 8px 0;
-            margin-top: 8px;
-        }
-        .coordonnees span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .coordonnees i {
-            color: #1d4a6e;
-            width: 16px;
-        }
-        /* Lien GitHub bien visible */
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #1d4a6e;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            text-decoration: none;
-            margin-top: 5px;
-        }
-        .github-link i {
-            color: white;
-        }
-        .github-link:hover {
-            background: #0b2b44;
-        }
-        .section {
-            margin: 12px 0 8px 0;
-        }
-        .section-titre {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0b2b44;
-            text-transform: uppercase;
-            border-bottom: 2px solid #1d4a6e;
-            padding-bottom: 3px;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        .profil-texte {
-            font-size: 12px;
-            line-height: 1.4;
-            text-align: justify;
-            color: #2e4053;
-            background: #f7faff;
-            padding: 10px 12px;
-            border-radius: 12px;
-        }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 15px;
-            margin-top: 5px;
-        }
-        .table-formation, .table-competences {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 11px;
-        }
-        .table-formation td, .table-competences td {
-            padding: 4px 2px;
-            vertical-align: top;
-        }
-        .table-formation td:first-child {
-            font-weight: 700;
-            color: #1d4a6e;
-            width: 85px;
-        }
-        .table-competences td:first-child {
-            font-weight: 700;
-            color: #1d4a6e;
-            width: 110px;
-        }
-        .table-competences td {
-            border-bottom: 1px dashed #d0d9e2;
-        }
-        .projets-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 6px 10px;
-            font-size: 10.5px;
-        }
-        .projet-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 4px;
-        }
-        .projet-item i {
-            color: #1d4a6e;
-            font-size: 10px;
-            margin-top: 2px;
-        }
-        .exp-item {
-            margin-bottom: 10px;
-            background: #f8fbfe;
-            padding: 8px 10px;
-            border-radius: 12px;
-        }
-        .exp-titre {
-            font-weight: 700;
-            font-size: 13px;
-            color: #0b2b44;
-        }
-        .exp-lieu {
-            font-weight: 600;
-            color: #1d4a6e;
-            font-size: 11px;
-            margin: 2px 0 4px 0;
-        }
-        .exp-desc {
-            font-size: 10.5px;
-            color: #23415c;
-            padding-left: 14px;
-            list-style: none;
-        }
-        .exp-desc li {
-            margin-bottom: 2px;
-            display: flex;
-            align-items: flex-start;
-            gap: 4px;
-        }
-        .exp-desc li i {
-            font-size: 8px;
-            margin-top: 3px;
-            color: #1d4a6e;
-        }
-        .langues-interets {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 15px;
-            font-size: 11px;
-        }
-        .langues p, .interets p {
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .langues i, .interets i {
-            color: #1d4a6e;
-            width: 16px;
-            font-size: 12px;
-        }
-        .interets-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-        .interets-items span {
-            background: #e3ecf5;
-            padding: 3px 10px;
-            border-radius: 30px;
-            font-size: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        @media print {
-            body { background: white; padding: 0; }
-            .cv { box-shadow: none; border-radius: 0; padding: 0.2cm; }
-            .btn-telecharger { display: none; }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>CV - KIMA SERAPHIN</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+    font-size: 9pt;
+    color: #1a1a1a;
+    line-height: 1.32;
+    background: #ececec;
+    padding: 15px;
+  }
+
+  /* ===== BOUTON ===== */
+  .btn-download {
+    display: block;
+    margin: 0 auto 15px auto;
+    padding: 12px 30px;
+    background: #7B1E2B;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(123,30,43,0.35);
+    transition: all 0.2s;
+  }
+  .btn-download:hover { background: #9B2A38; transform: translateY(-2px); }
+
+  /* ===== PAGE A4 ===== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 10mm 11mm 8mm 11mm;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 2.5px solid #7B1E2B;
+    padding-bottom: 9px;
+    margin-bottom: 9px;
+  }
+  .photo {
+    width: 78px; height: 78px;
+    border-radius: 50%;
+    border: 3px solid #2B2B2B;
+    background: #f2f2f2 url('PHOTO.jpg') center/cover no-repeat;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #7B1E2B; font-size: 7.5pt; text-align: center;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(43,43,43,0.2);
+  }
+  .header-info h1 {
+    font-size: 19pt; color: #7B1E2B;
+    letter-spacing: 0.8px; font-weight: 800;
+  }
+  .header-info .title {
+    font-size: 9.5pt; color: #2B2B2B;
+    font-weight: 700; margin-top: 1px;
+  }
+  .header-info .subtitle {
+    font-size: 8.5pt; color: #666;
+    margin-top: 2px; font-style: italic;
+  }
+  .contact {
+    display: flex; flex-wrap: wrap; gap: 3px 14px;
+    font-size: 8pt; color: #333; margin-top: 6px;
+  }
+  .contact a { color: #7B1E2B; text-decoration: none; font-weight: 600; }
+  .contact a:hover { text-decoration: underline; color: #2B2B2B; }
+
+  /* ===== TITRES ===== */
+  h2 {
+    font-size: 10.5pt; color: #7B1E2B;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    font-weight: 800; padding-bottom: 2px;
+    margin: 9px 0 5px 0;
+    border-bottom: 1.5px solid #7B1E2B;
+    position: relative;
+  }
+  h2::after {
+    content: ""; position: absolute;
+    left: 0; bottom: -1.5px;
+    width: 38px; height: 1.5px;
+    background: #2B2B2B;
+  }
+
+  /* ===== 2 COLONNES ===== */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ===== FORMATION : badge année en bordure ===== */
+  .edu-item {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 6px;
+    margin-bottom: 4px;
+    font-size: 8.5pt;
+    align-items: start;
+  }
+  .edu-item .year {
+    display: inline-block;
+    color: #7B1E2B;
+    font-weight: 800;
+    font-size: 7.5pt;
+    text-align: center;
+    padding: 1.5px 6px;
+    border: 1.2px solid #7B1E2B;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+    background: #fff;
+  }
+  .edu-item .desc strong { display: block; color: #2B2B2B; }
+  .edu-item .desc span { color: #666; font-size: 8pt; }
+
+  /* ===== COMPETENCES : puce en cercle plein + bordure ===== */
+  .skill-row {
+    display: grid; grid-template-columns: 92px 1fr;
+    gap: 6px; font-size: 8.5pt; padding: 3px 0;
+    border-bottom: 1px dashed #d8d8d8;
+    align-items: center;
+  }
+  .skill-row:last-child { border-bottom: none; }
+  .skill-row .cat {
+    font-weight: 800; color: #7B1E2B;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .skill-row .cat::before {
+    content: ""; display: inline-block;
+    width: 7px; height: 7px;
+    background: #7B1E2B;
+    border: 1px solid #7B1E2B;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .skill-row .val { color: #333; }
+
+  /* ===== EXPERIENCES : date en badge bordure ===== */
+  .exp-item { margin-bottom: 6px; font-size: 8.5pt; }
+  .exp-item .exp-title {
+    font-weight: 800; color: #7B1E2B; font-size: 9pt;
+  }
+  .exp-item .exp-meta {
+    display: inline-block;
+    color: #2B2B2B;
+    background: #fff;
+    border: 1.2px solid #2B2B2B;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 1.5px 9px;
+    border-radius: 999px;
+    margin: 2px 0 3px 0;
+    letter-spacing: 0.3px;
+  }
+  .exp-item ul { margin-left: 14px; }
+  .exp-item li { margin-bottom: 1px; }
+
+  /* ===== PROJETS : puce ronde + bordure ===== */
+  .projects {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3px 14px; font-size: 8.5pt;
+  }
+  .projects div {
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .projects div::before {
+    content: ""; display: inline-block;
+    width: 6px; height: 6px;
+    background: #7B1E2B;
+    border: 1px solid #7B1E2B;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  /* ===== LANGUES : niveau en badge bordure ===== */
+  .lang-item {
+    display: flex; justify-content: space-between;
+    align-items: center;
+    font-size: 8.5pt; padding: 2.5px 0;
+    border-bottom: 1px dotted #e0e0e0;
+  }
+  .lang-item:last-child { border-bottom: none; }
+  .lang-item .lang {
+    font-weight: 800; color: #7B1E2B;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .lang-item .lang::before {
+    content: ""; display: inline-block;
+    width: 7px; height: 7px;
+    background: #7B1E2B;
+    border: 1px solid #7B1E2B;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .lang-item .level {
+    color: #2B2B2B;
+    background: #fff;
+    border: 1.2px solid #2B2B2B;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 999px;
+  }
+
+  /* ===== INTERETS : badge bordure ===== */
+  .interests {
+    display: flex; flex-wrap: wrap; gap: 5px 7px;
+    font-size: 8pt; margin-top: 4px;
+  }
+  .interests span {
+    color: #7B1E2B;
+    background: #fff;
+    border: 1.2px solid #7B1E2B;
+    padding: 1.5px 9px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  /* ===== CERTIFICATIONS : cercle étoilé bordure ===== */
+  .cert-item {
+    font-size: 8.5pt;
+    margin-bottom: 3px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.35;
+  }
+  .cert-item::before {
+    content: "★";
+    position: absolute;
+    left: 0; top: 0;
+    width: 16px; height: 16px;
+    background: #fff;
+    color: #7B1E2B;
+    font-size: 8pt;
+    border: 1.3px solid #7B1E2B;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cert-item strong { color: #2B2B2B; }
+  .cert-item .cert-date {
+    color: #666; font-style: italic; font-size: 8pt;
+    font-weight: 600;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer-note {
+    margin-top: 9px; font-size: 7pt; color: #999;
+    text-align: center; border-top: 1px solid #e5e5e5;
+    padding-top: 5px;
+  }
+  .footer-note a { color: #7B1E2B; text-decoration: none; font-weight: 600; }
+  .footer-note a:hover { text-decoration: underline; }
+
+  /* ===== IMPRESSION ===== */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .btn-download { display: none; }
+    .page {
+      box-shadow: none; margin: 0;
+      width: 100%; min-height: auto;
+      padding: 8mm 10mm 6mm 10mm;
+    }
+    h2 { page-break-after: avoid; }
+    .exp-item, .cert-item, .edu-item { page-break-inside: avoid; }
+    a { color: #7B1E2B; text-decoration: none; }
+    /* Force la visibilité des bordures à l'impression */
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
 </head>
 <body>
-    <button class="btn-telecharger" id="downloadPDF">
-        <i class="fas fa-file-pdf"></i> Télécharger en PDF
-    </button>
 
-    <div class="cv" id="cv-content">
-        <!-- En-tête avec photo -->
-        <div class="header">
-            <div class="photo">
-                <!-- Insère ici ta photo : <img src="lien_vers_ta_photo.jpg" alt="Photo KIMA"> -->
-                <span class="photo-placeholder"></span>
-            </div>
-            <div class="titre">
-                <h1>SERAPHIN KIMA</h1>
-                <div class="sous-titre">Technicien Réseaux & Sécurité | Développeur Junior</div>
-            </div>
-        </div>
+<button class="btn-download" onclick="window.print()">📥 Télécharger mon CV en PDF (1 page)</button>
 
-        <!-- Coordonnées et GitHub -->
-        <div class="coordonnees">
-            <span><i class="fas fa-map-marker-alt"></i> Kadiogo, Patte d'oie secteur 52, Ouagadougou</span>
-            <span> TEL: +226 67 77 09 63 | 78 13 62 40</span>
-            <span><i class="fas fa-envelope"></i> kimaseraphin@icloud.com</span>
-            <!-- Lien GitHub -->
-            <a href="https://site-2025.github.io/portfoliome.com/portfolio.html" target="_blank" class="github-link">
-                <i class="fab fa-github"></i> mon portfolio.online lien :  https://site-2025.github.io/portfoliome.com/portfolio.html
-            </a>
-        </div>
+<div class="page">
 
-        <!-- Profil -->
-        <div class="section">
-            <div class="section-titre">Profil</div>
-            <p class="profil-texte">Étudiant en Licence Réseaux & Télécoms, passionné par la cybersécurité et le développement. Autonome, curieux, auto-apprentissage constant. Compétences solides en réseaux, sécurité, maintenance. Bon contact et esprit d'équipe.</p>
-        </div>
-
-        <!-- Formation et Compétences -->
-        <div class="grid-2">
-            <div>
-                <div class="section-titre">Formation</div>
-                <table class="table-formation">
-                    <tr><td>2025–…</td><td>Licence Réseaux & Télécoms (en cours) – ESMI, Ouagadougou</td></tr>
-                    <tr><td>2022–23</td><td>Baccalauréat – Collège privé ETIENNE, CI</td></tr>
-                    <tr><td>2019–20</td><td>BEPC – Collège Moderne de Bingerville, CI</td></tr>
-                    <tr><td>2016–17</td><td>CEP – École Privée Saint Joseph, CI</td></tr>
-                </table>
-            </div>
-            <div>
-                <div class="section-titre">Compétences clés</div>
-                <table class="table-competences">
-                    <tr><td>Réseaux</td><td>LAN/VLAN, DHCP, routage, Wireshark, Linux Apache – Intermédiaire</td></tr>
-                    <tr><td>Cybersécurité</td><td>Metasploit, malwares, phishing, portails captifs – intermediare</td></tr>
-                    <tr><td>Développement</td><td>HTML/CSS/JS, Python/C/SQL (notions), Git/GitHub</td></tr>
-                    <tr><td>Outils & OS</td><td>Kali Linux, Wireshark, Ubuntu, Windows, VS Code</td></tr>
-                    <tr><td>Maintenance</td><td>Installation logiciels, remplacement composants, diagnostic</td></tr>
-                    <tr><td>IA & Certif.</td><td>IA quotidienne , Google (AHA), Zaid Security</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- Projets personnels -->
-        <div class="section">
-            <div class="section-titre">Projets personnels</div>
-            <div class="projets-grid">
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Malware éducatif (Metasploit, cadre éthique)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Analyse réseau Wireshark (capture HTTPS)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Sites phishing & portails captifs (tests intrusion)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Portfolio HTML/CSS/JS sur GitHub Pages</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Configuration Reseaux (Cisco Packet Tracer)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Serveur web Apache (Linux Ubuntu)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Missions freelance (dépannage, conseil)</div>
-                <div class="projet-item"><i class="fas fa-chevron-right"></i> Utilisation quotidienne d'IA</div>
-            </div>
-        </div>
-
-        <!-- Expériences professionnelles -->
-        <div class="section">
-            <div class="section-titre">Expériences professionnelles</div>
-            <div class="exp-item">
-                <div class="exp-titre">Technicien informatique freelance</div>
-                <div class="exp-lieu">Indépendant — 2023 à aujourd'hui</div>
-                <ul class="exp-desc">
-                    <li><i class="fas fa-circle"></i> Dépannage, maintenance, installation OS/logiciels</li>
-                    <li><i class="fas fa-circle"></i> Remplacement composants (RAM, disque dur), assistance</li>
-                </ul>
-            </div>
-            <div class="exp-item">
-                <div class="exp-titre">Projets académiques (ESMI)</div>
-                <div class="exp-lieu">2025 à aujourd'hui</div>
-                <ul class="exp-desc">
-                    <li><i class="fas fa-circle"></i> Gestion de projets en équipe (réseaux virtuels)</li>
-                    <li><i class="fas fa-circle"></i> Configuration (Cisco), analyse Wireshark</li>
-                    <li><i class="fas fa-circle"></i> Serveurs Linux (Apache), documentation technique</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Langues et centres d'intérêt -->
-        <div class="section">
-            <div class="section-titre">Langues & intérêts</div>
-            <div class="langues-interets">
-                <div class="langues">
-                    <p><i class="fas fa-language"></i> <strong>Français :</strong>Bien parlé</p>
-                    <p><i class="fas fa-language"></i> <strong>Anglais :</strong>  intermédiaire</p>
-                    <p><i class="fas fa-language"></i> <strong>Mooré :</strong> Bien parlé</p>
-                </div>
-                <div class="interets">
-                    <div class="interets-items">
-                        <span><i class="fas fa-futbol"></i> Football</span>
-                        <span><i class="fas fa-bicycle"></i> Vélo</span>
-                        <span><i class="fas fa-basketball-ball"></i> Basketball</span>
-                        <span><i class="fa-solid fa-plane"></i> Voyages </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="photo">PHOTO</div>
+    <div class="header-info">
+      <h1>SERAPHIN KIMA</h1>
+      <div class="title">Ingénieur de Travaux en Réseaux Informatiques et Télécommunications</div>
+      <div class="subtitle">Technicien Réseaux &amp; Sécurité | Développeur Junior</div>
+      <div class="contact">
+        <span>📍 Kadiogo, Patte d'oie secteur 52, Ouagadougou</span>
+        <span>📞 +226 67 77 09 63 | 78 13 62 40</span>
+        <span>✉️ <a href="mailto:seraphinverifed@gmail.com">seraphinverifed@gmail.com</a></span>
+        <span>🌐 <a href="https://site-2025.github.io/portfoliome.com/portfolio.html" target="_blank">Portfolio / GitHub</a></span>
+      </div>
     </div>
+  </div>
 
-    <script>
-        document.getElementById('downloadPDF').addEventListener('click', function() {
-            this.style.display = 'none';
-            window.print();
-            setTimeout(() => this.style.display = 'inline-flex', 200);
-        });
-    </script>
+  <!-- PROFIL -->
+  <h2>Profil</h2>
+  <p style="font-size:8.5pt; text-align:justify;">
+    Ingénieur de Travaux en Réseaux Informatiques et Télécommunications, passionné par la cybersécurité et le développement. Autonome, curieux et doté d'un fort esprit d'équipe. Compétences solides en administration réseau, maintenance informatique et développement d'outils. Capacité d'adaptation rapide et goût prononcé pour l'apprentissage continu.
+  </p>
+
+  <!-- FORMATION + COMPETENCES -->
+  <div class="two-col">
+    <div>
+      <h2>Formation</h2>
+      <div class="edu-item">
+        <span class="year">2025 – ...</span>
+        <div class="desc"><strong>Ingénieur de Travaux en Réseaux Informatiques et Télécommunications</strong><span>ESMI, Ouagadougou (En cours)</span></div>
+      </div>
+      <div class="edu-item">
+        <span class="year">2023</span>
+        <div class="desc"><strong>Immersion patriotique (ISTAPEM)</strong><span>Formation civique et citoyenne</span></div>
+      </div>
+      <div class="edu-item">
+        <span class="year">2022 – 23</span>
+        <div class="desc"><strong>Baccalauréat</strong><span>Collège privé ETIENNE, CI</span></div>
+      </div>
+      <div class="edu-item">
+        <span class="year">2019 – 20</span>
+        <div class="desc"><strong>BEPC</strong><span>Collège Moderne de Bingerville, CI</span></div>
+      </div>
+      <div class="edu-item">
+        <span class="year">2016 – 17</span>
+        <div class="desc"><strong>CEP</strong><span>École Privée Saint Joseph, CI</span></div>
+      </div>
+    </div>
+    <div>
+      <h2>Compétences Clés</h2>
+      <div class="skill-row"><span class="cat">Réseaux</span><span class="val">LAN/VLAN, DHCP, Routage, Wireshark, Linux, Apache – Intermédiaire</span></div>
+      <div class="skill-row"><span class="cat">Cybersécurité</span><span class="val">Metasploit, Malwares, Phishing, Portails captifs – Intermédiaire</span></div>
+      <div class="skill-row"><span class="cat">Développement</span><span class="val">HTML/CSS/JS, Python/C/SQL (notions), Git/GitHub</span></div>
+      <div class="skill-row"><span class="cat">Outils &amp; OS</span><span class="val">Kali Linux, Wireshark, Ubuntu, Windows, VS Code</span></div>
+      <div class="skill-row"><span class="cat">Maintenance</span><span class="val">Installation logiciels, remplacement composants, diagnostic</span></div>
+      <div class="skill-row"><span class="cat">IA</span><span class="val">Utilisation quotidienne d'outils d'IA</span></div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <h2>Certifications</h2>
+  <div class="cert-item"><strong>Learn Ethical Hacking from Scratch</strong> – Zaid Zabi <span class="cert-date">— Novembre 2025</span></div>
+  <div class="cert-item"><strong>Google – Technical Support Fundamentals</strong> <span class="cert-date">— Octobre 2025</span></div>
+  <div class="cert-item"><strong>E-Council – Ethical Hacking Essentials</strong> <span class="cert-date">— Février 2026</span></div>
+
+  <!-- PROJETS -->
+  <h2>Projets Personnels</h2>
+  <div class="projects">
+    <div>Malware éducatif (Metasploit, cadre éthique)</div>
+    <div>Analyse réseau Wireshark (capture HTTPS)</div>
+    <div>Sites phishing &amp; portails captifs (tests intrusion)</div>
+    <div>Portfolio HTML/CSS/JS sur GitHub Pages</div>
+    <div>Configuration Réseaux (Cisco Packet Tracer)</div>
+    <div>Serveur web Apache (Linux Ubuntu)</div>
+    <div>Missions freelance (dépannage, conseil)</div>
+    <div>Utilisation quotidienne d'IA</div>
+  </div>
+
+  <!-- EXPERIENCES -->
+  <h2>Expériences Professionnelles</h2>
+
+  <div class="exp-item">
+    <div class="exp-title">Stage – CCVA (Centre de Contrôle des Véhicules Automobiles), Ouagadougou</div>
+    <div class="exp-meta">15 juin – 14 septembre 2026</div>
+    <ul>
+      <li>Dépannage réseau (câblage, switchs, routeurs, points d'accès).</li>
+      <li>Configuration d'équipements réseau et de postes informatiques.</li>
+      <li>Assistance technique aux utilisateurs (hardware/software).</li>
+      <li>Maintenance préventive et curative du parc informatique, etc.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-title">Technicien Informatique Freelance</div>
+    <div class="exp-meta">Indépendant — 2023 à aujourd'hui</div>
+    <ul>
+      <li>Dépannage, maintenance préventive et curative (hardware/software).</li>
+      <li>Installation et configuration de systèmes d'exploitation et logiciels.</li>
+      <li>Remplacement de composants (RAM, disques durs) et assistance utilisateur.</li>
+      <li>Conseil en optimisation de performance et sécurité de base, etc.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-title">Projets Académiques (ESMI)</div>
+    <div class="exp-meta">2025 à aujourd'hui</div>
+    <ul>
+      <li>Gestion de projets en équipe (réseaux virtuels).</li>
+      <li>Configuration Cisco (routeurs, switchs), analyse Wireshark.</li>
+      <li>Déploiement de serveurs Linux (Apache), documentation technique, etc.</li>
+    </ul>
+  </div>
+
+  <!-- LANGUES + INTERETS -->
+  <div class="two-col">
+    <div>
+      <h2>Langues</h2>
+      <div class="lang-item"><span class="lang">Français</span><span class="level">Bien parlé</span></div>
+      <div class="lang-item"><span class="lang">Anglais</span><span class="level">Intermédiaire</span></div>
+      <div class="lang-item"><span class="lang">Mooré</span><span class="level">Bien parlé</span></div>
+    </div>
+    <div>
+      <h2>Centres d'intérêt</h2>
+      <div class="interests">
+        <span>⚽ Football</span>
+        <span>🚴 Vélo</span>
+        <span>🏀 Basketball</span>
+        <span>✈️ Voyages</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">CV – KIMA SERAPHIN | <a href="https://site-2025.github.io/CV-SERAPHIN.K/file.html" target="_blank">site-2025.github.io/CV-SERAPHIN.K/file.html</a></div>
+</div>
+
 </body>
 </html>
